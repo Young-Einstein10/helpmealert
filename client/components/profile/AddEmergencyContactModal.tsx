@@ -75,6 +75,14 @@ const AddEmergencyContactModal = (props: ModalProps) => {
 
   const handleAddContacts = async () => {
     try {
+      if (selectedContacts.length < 2) {
+        return toast({
+          title: "Please add at least 2 contacts",
+          status: "warning",
+          position: "top",
+        });
+      }
+
       setIsAddingContact(true);
 
       const payload = { twitter_user_ids: selectedContacts };

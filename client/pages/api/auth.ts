@@ -52,7 +52,20 @@ async function authRoute(req: NextApiRequest, res: NextApiResponse) {
       client: userClient,
     } = await tempClient.login(verifier);
 
-    const { data } = await userClient.currentUserV2();
+    const { data: userData } = await userClient.v2.me({
+      "user.fields":
+        "created_at,description,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld",
+    });
+
+    const data = {
+      id: userData.id,
+      name: userData.name,
+      username: userData.username,
+      url: userData.url,
+      location: userData.location,
+      description: userData.description,
+      profile_image_url: userData.profile_image_url,
+    };
 
     // Remove temporary OAuth Token and OAuth Secret stored earlier
     req.session.oauthToken = "";
@@ -75,10 +88,6 @@ async function authRoute(req: NextApiRequest, res: NextApiResponse) {
         },
       });
 
-      /*
-    TODO: Check if user has been registered, if they're registered already skip this step else send the user a welcome message welcoming them to the Helpme BOT
-  */
-
       await sendMessageToTwitterUser(
         userDetails!.twitter_user_id,
         MESSAGES.SENT_TO_NEWLY_REGISTERED_USER
@@ -97,7 +106,8 @@ async function authRoute(req: NextApiRequest, res: NextApiResponse) {
     await req.session.save();
 
     return res.redirect("/");
-  } catch (error) {
+  } catch (error: any) {
+    console.log(error.data.errors);
     return res.status(500).json({ message: (error as Error).message });
   }
 }

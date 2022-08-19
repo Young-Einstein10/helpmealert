@@ -9,6 +9,7 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
+import Oval from "components/icons/oval";
 
 const questionsList = [
   {
@@ -45,8 +46,16 @@ const FAQs = () => {
           mb="60px"
           maxW={600}
           mx="auto"
+          position="relative"
         >
           Frequently Asked Questions
+          <Oval
+            color="#124FAA"
+            position="absolute"
+            top="-12px"
+            right="0px"
+            zIndex="-1"
+          />
         </Heading>
 
         <Accordion allowToggle>

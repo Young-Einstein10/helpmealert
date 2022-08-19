@@ -25,6 +25,7 @@ const ProfileBackground = ({ user }: { user?: User }) => {
         <Avatar
           width={172}
           height={172}
+          size="2xl"
           name={user?.name}
           src={user?.profile_image_url}
         />{" "}

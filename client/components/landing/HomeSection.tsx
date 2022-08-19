@@ -15,6 +15,7 @@ import PrimaryButton from "components/Button";
 import TwitterIcon from "components/icons/twitter";
 import PlayIcon from "components/icons/play";
 import Waves from "components/Waves";
+import Oval from "components/icons/oval";
 
 const HomeSection = () => {
   return (
@@ -29,18 +30,21 @@ const HomeSection = () => {
         bgPosition="center"
         bgRepeat="no-repeat"
       >
-        <Heading
-          fontSize={["35px", "40px", "56px"]}
-          fontWeight={700}
-          lineHeight={["40px", "57px", "67px"]}
-        >
-          Get help
-          <br />
-          in an emergency
-        </Heading>
-        <Text fontSize={["18px", null, "22px"]}>
-          Alert your loved ones when you are in trouble
-        </Text>
+        <Box position="relative">
+          <Heading
+            fontSize={["35px", "40px", "56px"]}
+            fontWeight={700}
+            lineHeight={["40px", "57px", "67px"]}
+          >
+            Get help
+            <br />
+            in an emergency
+          </Heading>
+          <Text fontSize={["18px", null, "22px"]}>
+            Alert your loved ones when you are in trouble
+          </Text>
+          <Oval position="absolute" top="72px" right="170px" />
+        </Box>
 
         <InputGroup mt="36px" mb="32px" maxW="725px" mx="auto" height="56px">
           <InputLeftAddon bg="#fff" borderRight="none" h="full">

@@ -21,7 +21,20 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
         accessSecret,
       });
 
-      const { data } = await userClient.currentUserV2();
+      const { data: userData } = await userClient.v2.me({
+        "user.fields":
+          "created_at,description,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld",
+      });
+
+      const data = {
+        id: userData.id,
+        name: userData.name,
+        username: userData.username,
+        url: userData.url,
+        location: userData.location,
+        description: userData.description,
+        profile_image_url: userData.profile_image_url,
+      };
 
       req.session.user = { ...data, isAuthenticated: true };
 
@@ -40,12 +53,10 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
 
     return res.redirect(link.url);
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        status: "error",
-        message: (error as Error).message,
-        error: JSON.stringify(error),
-      });
+    return res.status(500).json({
+      status: "error",
+      message: (error as Error).message,
+      error: JSON.stringify(error),
+    });
   }
 }

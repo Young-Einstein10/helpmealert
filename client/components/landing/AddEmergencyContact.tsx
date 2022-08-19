@@ -1,6 +1,7 @@
 import React from "react";
 import Wrapper from "components/Wrapper";
 import { Heading, Stack, Image, Box } from "@chakra-ui/react";
+import Oval from "components/icons/oval";
 
 const AddEmergencyContact = () => {
   return (
@@ -12,10 +13,18 @@ const AddEmergencyContact = () => {
           fontWeight={600}
           color="#212026"
           mb="106px"
-          maxW={600}
+          maxW={620}
           mx="auto"
+          position="relative"
         >
           Add your trusted friends and loved ones to your emergency contact
+          <Oval
+            color="#124FAA"
+            position="absolute"
+            top="30px"
+            left="190px"
+            zIndex="-1"
+          />
         </Heading>
 
         <Stack
