@@ -18,8 +18,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     redirectTo: "/",
   });
 
-  console.log({ userData });
-
   useEffect(() => {
     if (userData) {
       setUser(userData);
