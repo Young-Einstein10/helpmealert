@@ -12,12 +12,12 @@ const BEARER_TOKEN = CONFIG.BEARER_TOKEN;
 // Edit rules as desired below
 const rules = [
   {
-    value: "@helpmenaija has:mentions -is:reply -is:retweet",
-    tag: "Helpmenaija mentions",
+    value: "@helpmealert has:mentions -is:reply -is:retweet",
+    tag: "Helpmealert mentions",
   },
   // {
-  //   value: "@helpmenaija",
-  //   tag: "Helpmenaija",
+  //   value: "@helpmealert",
+  //   tag: "Helpmealert",
   // },
 ];
 

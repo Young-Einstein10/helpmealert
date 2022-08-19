@@ -14,7 +14,7 @@ const questionsList = [
   {
     question: "What does Helpme do?",
     answer:
-      "When you tweet your emergency to @helpmenaija, the service alerts your registered emergency contacts that you need help and gives them details about your situation.",
+      "When you tweet your emergency to @helpmealert, the service alerts your registered emergency contacts that you need help and gives them details about your situation.",
   },
   {
     question: "How do I setup my emergency contact?",
@@ -29,7 +29,7 @@ const questionsList = [
   {
     question: "How soon would help come after my tweet?",
     answer:
-      "Your contacts will be notified after you tweet @helpmenaija. But we'll check in with you again in 5 minutes to see if you've been reached. If not, we'd reach out to your contacts again and publish your tweet so that people in your area could help.",
+      "Your contacts will be notified after you tweet @helpmealert. But we'll check in with you again in 5 minutes to see if you've been reached. If not, we'd reach out to your contacts again and publish your tweet so that people in your area could help.",
   },
 ];
 

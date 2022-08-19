@@ -8,7 +8,7 @@ export const defaultAppTokens = {
 export const TWITTER_CALLBACK_URL =
   process.env.NODE_ENV === "development"
     ? "http://127.0.0.1:3000/api/auth"
-    : "https://helpmenaija-client.vercel.app/api/auth";
+    : "https://helpmealert.vercel.app/api/auth";
 
 // Create client used to generate auth links only
 const requestClient = new TwitterApi({

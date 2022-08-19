@@ -4,8 +4,8 @@ import CONFIG, { TOKENS } from "../config";
 import prisma from "../lib/prisma-client";
 
 const BEARER_TOKEN = CONFIG.BEARER_TOKEN;
-const WEBSITE_LINK = "https://helpmenaija-client.vercel.app";
-const BOT_USERNAME = "helpmenaija";
+const WEBSITE_LINK = "https://helpmealert.vercel.app";
+const BOT_USERNAME = "helpmealert";
 
 export interface IUser {
   id: string;
@@ -50,7 +50,7 @@ export const replyToNewUser = async (tweet: TweetV2SingleResult) => {
     console.log("Replied a tweet");
 
     await oauth1_0Client.v2.reply(
-      `Welcome to Helpmenaija BOT. Please click on the link below to set up your emergency contacts. ${WEBSITE_LINK}`,
+      `Welcome to HelpmeAlert BOT. Please click on the link below to set up your emergency contacts. ${WEBSITE_LINK}`,
       tweet.data.id
     );
   } catch (error) {

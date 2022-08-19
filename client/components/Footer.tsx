@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, HStack, Link as ChakraLink, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import XLogo from "./icons/xlogo";
 import TwitterIcon from "./icons/twitter";
 import Wrapper from "./Wrapper";
+import Logo from "./icons/logo";
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
       <Wrapper my={8} p={0}>
         <Flex justifyContent="space-between" alignItems="center">
           <HStack as="nav" spacing="32px">
-            <XLogo />
+            <Logo color="#0D359A" />
 
             <Link href="/about" passHref>
               <ChakraLink>About</ChakraLink>

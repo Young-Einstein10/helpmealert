@@ -55,10 +55,7 @@ const Layout = ({
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://helpmenaija-client.vercel.app"
-        />
+        <meta property="og:url" content="https://helpmealert.vercel.app" />
         <meta property="og:title" content="Safety Emergency BOT" />
         <meta
           property="og:description"
@@ -68,10 +65,7 @@ const Layout = ({
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://helpmenaija-client.vercel.app"
-        />
+        <meta property="twitter:url" content="https://helpmealert.vercel.app" />
         <meta property="twitter:title" content="Safety Emergency BOT" />
         <meta
           property="twitter:description"
