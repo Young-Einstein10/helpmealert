@@ -2,7 +2,7 @@ import React from "react";
 import {
   Box,
   Container,
-  Flex,
+  Link as ChakraLink,
   Heading,
   HStack,
   Input,
@@ -66,15 +66,22 @@ const HomeSection = () => {
           <PrimaryButton leftIcon={<TwitterIcon />}>
             Add Emergency contact
           </PrimaryButton>
-          <PrimaryButton
-            leftIcon={<PlayIcon />}
-            variant="link"
-            textDecoration="underline"
-            bg="none"
-            color="#fff"
+
+          <ChakraLink
+            href="https://youtu.be/lQRpGipaUas"
+            target="_blank"
+            rel="noreferrer noopenner"
           >
-            How it works
-          </PrimaryButton>
+            <PrimaryButton
+              leftIcon={<PlayIcon />}
+              variant="link"
+              textDecoration="underline"
+              bg="none"
+              color="#fff"
+            >
+              How it works
+            </PrimaryButton>
+          </ChakraLink>
         </HStack>
       </Container>
 
