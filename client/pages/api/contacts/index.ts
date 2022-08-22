@@ -7,7 +7,7 @@ import { TwitterApi } from "twitter-api-v2";
 import prisma from "lib/prisma-client";
 import { sendMessageToTwitterUser } from "lib/helpers";
 import { MESSAGES } from "utils/content";
-import { BOT_USERNAME } from "utils/constants";
+import { removeContact } from "./[id]";
 
 export type Contacts = Prisma.contactsCreateInput;
 
@@ -73,24 +73,6 @@ async function handleGetEmergencyContacts(
 
   return res.status(200).send(contacts);
 }
-
-const removeContact = async (twitter_user_id: string) => {
-  if (!twitter_user_id) return;
-
-  const contact = await prisma.contacts.findFirst({
-    where: {
-      twitter_user_id: twitter_user_id,
-    },
-  });
-
-  if (contact) {
-    await prisma.contacts.delete({
-      where: {
-        id: contact.id,
-      },
-    });
-  }
-};
 
 // POST /api/contacts/
 async function handleCreateEmergencyContacts(

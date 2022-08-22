@@ -7,11 +7,11 @@ import {
   ListIcon,
   ListItem,
   UnorderedList,
-  Link as ChakraLink,
   Square,
   Spinner,
   Text,
   Flex,
+  useToast,
 } from "@chakra-ui/react";
 import { ChevronRightIcon, PlusSquareIcon } from "@chakra-ui/icons";
 import { Contacts } from "pages/api/contacts";
@@ -22,11 +22,36 @@ const EmergencyContacts = ({
 }: {
   toggleAddEmergencyContactModal: () => void;
 }) => {
-  const { data: contacts, error } = useSWR<Contacts[]>("/api/contacts");
+  const toast = useToast();
+
+  const { data: contacts, error, mutate } = useSWR<Contacts[]>("/api/contacts");
 
   const isLoading = !contacts && !error;
 
-  const handleDeleteEmergencyContact = (id: string) => {};
+  const handleDeleteEmergencyContact = async (id: string) => {
+    if (!id) return;
+
+    try {
+      await fetch(`/api/contacts/${id}`, {
+        headers: { "Content-Type": "application/json" },
+        method: "DELETE",
+      });
+
+      const remianingContacts = contacts?.filter(
+        (contact) => contact.id !== id
+      );
+
+      mutate([...remianingContacts!]);
+
+      return toast({
+        title: "Emergecny contact deleted successfully!",
+        status: "error",
+        position: "top",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Box width={["100%", "100%", "45%"]}>

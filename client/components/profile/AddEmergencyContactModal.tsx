@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal as ChakraModal,
   ModalOverlay,
@@ -12,7 +12,6 @@ import {
   Box,
   Image,
   IconButton,
-  useToast,
 } from "@chakra-ui/react";
 import Select, {
   ActionMeta,
@@ -23,9 +22,6 @@ import PrimaryButton from "components/Button";
 import TwitterIcon from "components/icons/twitter";
 import { CloseIcon } from "@chakra-ui/icons";
 import WarningIcon from "components/icons/warning";
-import useSWR from "swr";
-import { UserV2 } from "twitter-api-v2";
-import { Contacts } from "pages/api/contacts";
 import { useAddEmergencyContact } from "hooks";
 
 const styleProps = {
@@ -38,22 +34,6 @@ const styleProps = {
 type ModalProps = Omit<ChakraModalProps, "children">;
 
 const AddEmergencyContactModal = (props: ModalProps) => {
-  // const [isAddingContact, setIsAddingContact] = useState(false);
-  // const [selectedContacts, setSelectedContacts] = useState<string[]>([]);
-
-  // const { data: followers, error } = useSWR<UserV2[]>("/api/followers");
-  // const { data: contacts, mutate: mutateContact } =
-  //   useSWR<Contacts[]>("/api/contacts");
-
-  // const toast = useToast();
-  // const isLoading = !error && !followers;
-
-  // const myContacts = contacts?.map((contact) => contact.username);
-
-  // const unsavedFollowers = followers?.filter(
-  //   (follower) => !myContacts?.includes(follower.username)
-  // );
-
   const {
     followers,
     selectedContacts,
@@ -82,61 +62,6 @@ const AddEmergencyContactModal = (props: ModalProps) => {
 
     setSelectedContacts(ids!);
   };
-
-  // const handleAddContacts = async () => {
-  //   try {
-  //     if (selectedContacts.length < 2) {
-  //       return toast({
-  //         title: "Please add at least 2 contacts",
-  //         status: "warning",
-  //         position: "top",
-  //       });
-  //     }
-
-  //     setIsAddingContact(true);
-
-  //     const payload = { twitter_user_ids: selectedContacts };
-
-  //     const response = await fetch("/api/contacts", {
-  //       method: "POST",
-  //       body: JSON.stringify(payload),
-  //     });
-
-  //     if (response.ok) {
-  //       setIsAddingContact(false);
-
-  //       const { data } = await response.json();
-
-  //       mutateContact([...contacts!, ...data]);
-
-  //       toast({
-  //         title: "Successful",
-  //         description: `${selectedContacts.length} Emergency Contact(s) added successfully.`,
-  //         status: "success",
-  //         variant: "solid",
-  //         position: "top",
-  //       });
-
-  //       props.onClose();
-  //     } else {
-  //       console.log(response);
-
-  //       toast({
-  //         position: "top",
-  //         status: "error",
-  //         variant: "solid",
-  //         title: "Error",
-  //         description: response.statusText,
-  //       });
-
-  //       setIsAddingContact(false);
-  //     }
-  //   } catch (error) {
-  //     setIsAddingContact(false);
-
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <ChakraModal isOpen={props.isOpen} onClose={props.onClose} size="6xl">

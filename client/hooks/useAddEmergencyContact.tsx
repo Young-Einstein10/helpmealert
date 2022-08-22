@@ -38,7 +38,7 @@ export const useAddEmergencyContact = ({ onClose }: Props) => {
     try {
       if (selectedContacts.length < 1) {
         return toast({
-          title: "Please add at least 1 contact(s)",
+          title: "Please add at least 1 emergency contact(s)",
           status: "warning",
           position: "top",
         });
