@@ -5,19 +5,80 @@ import {
   Link as ChakraLink,
   Heading,
   HStack,
-  Input,
   InputGroup,
   InputLeftAddon,
   Text,
+  useToast,
 } from "@chakra-ui/react";
+import Select, {
+  ActionMeta,
+  CSSObjectWithLabel,
+  SingleValue,
+} from "react-select";
 import SearchIcon from "components/icons/search";
 import PrimaryButton from "components/Button";
 import TwitterIcon from "components/icons/twitter";
 import PlayIcon from "components/icons/play";
 import Waves from "components/Waves";
 import Oval from "components/icons/oval";
+import { useAddEmergencyContact } from "hooks";
+import { useAuthContext } from "context/auth";
+
+const styleProps = {
+  control: (styles: CSSObjectWithLabel) => ({
+    ...styles,
+    minHeight: "56px",
+    borderLeft: "none",
+    borderTopLeftRadius: "none",
+    borderBottomLeftRadius: "none",
+    outline: "none",
+  }),
+  menu: (styles: CSSObjectWithLabel) => ({
+    ...styles,
+    width: "calc(100% + 61px)",
+    marginLeft: "-61px",
+  }),
+};
 
 const HomeSection = () => {
+  const user = useAuthContext();
+  const toast = useToast();
+
+  const showToast = () =>
+    toast({
+      title:
+        "Connect your twitter account to begin adding your emergency contacts.",
+      status: "info",
+      position: "top",
+    });
+
+  const {
+    followers,
+    selectedContacts,
+    setSelectedContacts,
+    isAddingContact,
+    handleAddContacts,
+    isFollowersLoading,
+  } = useAddEmergencyContact({ onClose: () => {} });
+
+  const options = followers?.map((follower) => ({
+    label: `@${follower.username}`,
+    value: follower.id,
+  }));
+
+  const handleSelectChange = (
+    selectOption: SingleValue<{
+      label: string;
+      value: string;
+    }>,
+    actionMeta: ActionMeta<{
+      label: string;
+      value: string;
+    }>
+  ) => {
+    setSelectedContacts([selectOption!.value]);
+  };
+
   return (
     <Box bg="#124FAA" height="calc(100vh - 100px)">
       <Container
@@ -50,21 +111,39 @@ const HomeSection = () => {
           <InputLeftAddon bg="#fff" borderRight="none" h="full">
             <SearchIcon />
           </InputLeftAddon>
-          <Input
-            type="text"
-            h="full"
-            placeholder="Search and add your emergency contact by via twitter handle"
-            background="#fff"
+
+          <Box
+            flexGrow={1}
+            textAlign="left"
             color="#000"
-            border="1px solid #CBD5E1"
-            borderRadius="6px"
-            borderLeft={0}
-          />
+            sx={{
+              ".css-1hb7zxy-IndicatorsContainer": {
+                display: "none",
+              },
+              ".css-o6a4rf-control:hover": {
+                borderColor: "#CBD5E1",
+              },
+            }}
+          >
+            <Select
+              id="contacts"
+              // isMulti
+              isLoading={isFollowersLoading}
+              options={options}
+              styles={styleProps}
+              onChange={handleSelectChange}
+              placeholder="Search and add your emergency contact by via twitter handle"
+            />
+          </Box>
         </InputGroup>
 
         <HStack spacing={6} justify="center">
-          <PrimaryButton leftIcon={<TwitterIcon />}>
-            Add Emergency contact
+          <PrimaryButton
+            isLoading={isAddingContact}
+            onClick={user?.isAuthenticated ? handleAddContacts : showToast}
+            leftIcon={<TwitterIcon />}
+          >
+            Add Emergency Contact
           </PrimaryButton>
 
           <ChakraLink

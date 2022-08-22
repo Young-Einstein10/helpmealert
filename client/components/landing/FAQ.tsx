@@ -13,14 +13,14 @@ import Oval from "components/icons/oval";
 
 const questionsList = [
   {
-    question: "What does Helpme do?",
+    question: "What does HelpmeAlert do?",
     answer:
-      "When you tweet your emergency to @helpmealert, the service alerts your registered emergency contacts that you need help and gives them details about your situation.",
+      "When you tweet your emergency to @Alertalert, the service alerts your registered emergency contacts that you need help and gives them details about your situation.",
   },
   {
     question: "How do I setup my emergency contact?",
     answer:
-      "Connect your Twitter account by clicking 'Link Twitter Account' button at the top to setup a profile on the Helpme website, you can then add your friends or followers to your emergency contacts.",
+      "Connect your Twitter account by clicking 'Link Twitter Account' button at the top to setup a profile on the Alert website, you can then add your friends or followers to your emergency contacts.",
   },
   {
     question: "How many contacts can I add?",
@@ -30,7 +30,7 @@ const questionsList = [
   {
     question: "How soon would help come after my tweet?",
     answer:
-      "Your contacts will be notified after you tweet @helpmealert. But we'll check in with you again in 5 minutes to see if you've been reached. If not, we'd reach out to your contacts again and publish your tweet so that people in your area could help.",
+      "Your contacts will be notified after you tweet @Alertalert. But we'll check in with you again in 5 minutes to see if you've been reached. If not, we'd reach out to your contacts again and publish your tweet so that people in your area could help.",
   },
 ];
 
