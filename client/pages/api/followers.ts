@@ -49,7 +49,9 @@ async function followersRoute(
       accessSecret,
     });
 
-    const { data } = await userClient.v2.followers(twitterUserId);
+    const { data } = await userClient.v2.followers(twitterUserId, {
+      max_results: 1000,
+    });
 
     const hours = 1;
 
