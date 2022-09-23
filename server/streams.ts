@@ -15,10 +15,6 @@ const rules = [
     value: "@helpmealert has:mentions -is:reply -is:retweet",
     tag: "Helpmealert mentions",
   },
-  // {
-  //   value: "@helpmealert",
-  //   tag: "Helpmealert",
-  // },
 ];
 
 const streamClient = new TwitterApi(BEARER_TOKEN);

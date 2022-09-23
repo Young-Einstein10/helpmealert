@@ -1,12 +1,11 @@
-# HelpmeAlert Frontend
+# HelpmeAlert Backend
 
-This folder contains the frontend implementation for the HelpmeAlert Twitter BOT.
+Basically responsible for streaming of Twitter feed using Twitter's [Filtered Stream API](https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/introduction).
 
 ## Technologies
 
-- [NextJS](https://nextjs.org/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Chakra UI](https://chakra-ui.com/)
+- [NodeJS](https://nodejs.org/)
+- [Express](https://expressjs.com/)
 - [Prisma](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/next-steps-typescript-postgres)
 - [PostgreSQL](https://www.postgresql.org)
 - [Twitter API (V1 and V2)](https://developer.twitter.com/en/docs/twitter-api)

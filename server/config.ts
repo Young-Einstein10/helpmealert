@@ -27,8 +27,6 @@ export const TOKENS = {
   appSecret: CONFIG.CONSUMER_SECRET,
 };
 
-// console.log(TOKENS);
-
 // Create client used to generate auth links only
 export const requestClient = new TwitterApi({ ...TOKENS });
 
