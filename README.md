@@ -3,7 +3,7 @@
   <h3 align="center">HelpmeAlert</h3>
 
   <p align="center">
-   A Safety emergency tool you can use on the Twitter platform to notify your emergency contacts of your situation.
+   A Safety emergency tool you can use on the Twitter platform to notify your emergency contacts of any crisis situation.
     <br />
     <a href="https://twitter.com/helpmealert"><strong>Check it out »</strong></a>
     <br />
