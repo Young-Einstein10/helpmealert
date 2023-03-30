@@ -8,6 +8,13 @@ const breakpoints = {
 };
 
 const theme = extendTheme({
+  styles: {
+    global: {
+      html: {
+        scrollBehavior: "smooth",
+      },
+    },
+  },
   colors: {
     brand: "#1B5FC6",
     success: "rgba(39, 174, 96, 1)",

@@ -8,7 +8,7 @@ const Waves = () => {
       sx={{
         svg: {
           width: "100%",
-          marginTop: "-9rem",
+          marginTop: "-5%",
         },
       }}
     >
